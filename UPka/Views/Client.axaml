@@ -1,0 +1,40 @@
+﻿<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:viewModels="clr-namespace:UPka.ViewModels"
+        mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+        x:Class="UPka.Views.Client"
+        Title="Client"
+        x:DataType="viewModels:ClientModel">
+<DockPanel LastChildFill="True" Background="#f7f7f7">
+    <StackPanel Margin="3" Spacing="30" DockPanel.Dock="Bottom" Orientation="Horizontal" Background="#d8822e">
+        <TextBox MinWidth="200" Text="{Binding Search, Mode=TwoWay}" />
+        <CheckBox IsChecked="{Binding Sorting}">Сортировка </CheckBox>
+        <Button Content="Создать" Command="{Binding AddItem}" Background="#bb3921" />
+        <Button Content="Изменить" Command="{Binding EditItem}" Background="#bb3921" />
+        <Button Content="Удалить" Command="{Binding DeleteItem}" Background="#bb3921"/>
+        <Button Content="Таблицы" Command = "{Binding TableChoice }" Background="#bb3921"></Button>
+    </StackPanel>
+    <DataGrid ItemsSource="{Binding Items}"
+              SelectedItem="{Binding SelectedRow}"
+              AutoGenerateColumns="False"
+              CanUserResizeColumns="True"
+              CanUserSortColumns="True"
+              Name="Table"
+              IsReadOnly="True"
+              x:CompileBindings="False">
+        <DataGrid.Columns>
+            <DataGridTextColumn IsVisible="False" Header="Все столбцы" />
+            <DataGridTextColumn Header="ID" Binding="{Binding Id}" />
+            <DataGridTextColumn Header="Имя" Binding="{Binding FirstName}" />
+            <DataGridTextColumn Header="Фамилия" Binding="{Binding LastName}" />
+            <DataGridTextColumn Header="Телефон" Binding="{Binding Phone}" />
+            <DataGridTextColumn Header="Электронная почта" Binding="{Binding Email}" />
+            <DataGridTextColumn Header="Уровень языка" Binding="{Binding LanguageLevel}" />
+            <DataGridTextColumn Header="Группа" Binding="{Binding Group}" />
+            <DataGridTextColumn Header="Посещение" Binding="{Binding Attendance}" />
+        </DataGrid.Columns>
+    </DataGrid>
+</DockPanel>
+</Window>
